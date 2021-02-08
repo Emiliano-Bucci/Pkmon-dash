@@ -25,18 +25,21 @@ export function query(args: {
     // filter only if q is defined
     q === undefined
       ? identity
-      : A.filter(p => p.name.toLowerCase().includes(q.toLowerCase()));
+      : A.filter((p) => p.name.toLowerCase().includes(q.toLowerCase()));
 
   const sliceByAfter: (as: Pokemon[]) => Pokemon[] =
     // filter only if q is defined
     after === undefined
       ? identity
-      : as =>
+      : (as) =>
           pipe(
             as,
-            A.findIndex(a => a.id === after),
-            O.map(a => a + 1),
-            O.fold(() => as, idx => as.slice(idx))
+            A.findIndex((a) => a.id === after),
+            O.map((a) => a + 1),
+            O.fold(
+              () => as,
+              (idx) => as.slice(idx)
+            )
           );
 
   const results: Pokemon[] = pipe(

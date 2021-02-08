@@ -11,10 +11,28 @@
     }
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client": "yarn workspace @frontend-assignment/client start",
+    "server": "yarn workspace @frontend-assignment/server start",
+    "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\"",
+    "lint": "eslint --fix --config .eslintrc.js '**/*.{ts,tsx,js}'"
   },
   "workspaces": [
     "packages/*"
   ],
-  "private": true
+  "private": true,
+  "dependencies": {
+    "concurrently": "^5.3.0"
+  },
+  "devDependencies": {
+    "@emotion/eslint-plugin": "^11.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "@typescript-eslint/parser": "^4.15.0",
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-testing-library": "^3.10.1",
+    "prettier": "^2.2.1"
+  }
 }

@@ -9,7 +9,7 @@ const typeDefs = gql(schema);
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
 });
 
 server.listen().then(({ url }) => {

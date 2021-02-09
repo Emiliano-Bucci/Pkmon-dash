@@ -14,7 +14,7 @@ interface Pokemon {
 
 const SIZE = 10;
 
-type Filter = (as: Pokemon[]) => Pokemon[];
+type FilterFn = (as: Pokemon[]) => Pokemon[];
 
 export function query(args: {
   after?: string;
@@ -23,11 +23,11 @@ export function query(args: {
 }): Connection<Pokemon> {
   const { after, q, limit = SIZE } = args;
 
-  const filterByQ: Filter = !q
+  const filterByQ: FilterFn = !q
     ? identity
     : A.filter((p) => p.name.toLowerCase().includes(q.toLowerCase()));
 
-  const sliceByAfter: Filter = !after
+  const sliceByAfter: FilterFn = !after
     ? identity
     : (as) =>
         pipe(
@@ -47,5 +47,6 @@ export function query(args: {
     // slicing limit + 1 because the `toConnection` function should known the connection size to determine if there are more results
     slice(0, limit + 1)
   );
+
   return toConnection(results, limit);
 }

@@ -1,21 +1,21 @@
 enum PokemonTypes {
-  GRASS
-  POISON
-  FIRE
-  FLYING
-  WATER
-  BUG
-  NORMAL
-  ELECTRIC
-  GROUND
-  FAIRY
-  FIGHTING
-  PSYCHIC
-  ROCK
-  STEEL
-  ICE
-  GHOST
-  DRAGON
+  Grass
+  Poison
+  Fire
+  Flying
+  Water
+  Bug
+  Normal
+  Electric
+  Ground
+  Fairy
+  Fighting
+  Psychic
+  Rock
+  Steel
+  Ice
+  Ghost
+  Dragon
 }
 
 type PageInfo {

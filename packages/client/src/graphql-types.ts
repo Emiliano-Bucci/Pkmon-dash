@@ -25,6 +25,12 @@ export interface GetAllPokemons {
   pokemons: GetAllPokemons_pokemons | null;
 }
 
+export interface GetAllPokemonsVariables {
+  q?: string | null;
+  after?: string | null;
+  limit?: number | null;
+}
+
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 

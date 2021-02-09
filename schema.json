@@ -260,103 +260,103 @@
           "interfaces": null,
           "enumValues": [
             {
-              "name": "GRASS",
+              "name": "Grass",
               "description": "",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "POISON",
+              "name": "Poison",
               "description": "",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "FIRE",
+              "name": "Fire",
               "description": "",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "FLYING",
+              "name": "Flying",
               "description": "",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "WATER",
+              "name": "Water",
               "description": "",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "BUG",
+              "name": "Bug",
               "description": "",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "NORMAL",
+              "name": "Normal",
               "description": "",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "ELECTRIC",
+              "name": "Electric",
               "description": "",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "GROUND",
+              "name": "Ground",
               "description": "",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "FAIRY",
+              "name": "Fairy",
               "description": "",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "FIGHTING",
+              "name": "Fighting",
               "description": "",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "PSYCHIC",
+              "name": "Psychic",
               "description": "",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "ROCK",
+              "name": "Rock",
               "description": "",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "STEEL",
+              "name": "Steel",
               "description": "",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "ICE",
+              "name": "Ice",
               "description": "",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "GHOST",
+              "name": "Ghost",
               "description": "",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "DRAGON",
+              "name": "Dragon",
               "description": "",
               "isDeprecated": false,
               "deprecationReason": null

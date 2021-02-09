@@ -8,6 +8,7 @@ export const GET_ALL_POKEMONS_QUERY = gql`
           id
           name
           types
+          classification
         }
       }
     }

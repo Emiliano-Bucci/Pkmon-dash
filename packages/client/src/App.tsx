@@ -73,6 +73,109 @@ export const App = () => {
           />
         </div>
       </header>
+
+      <main
+        css={css`
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          padding: 8rem;
+        `}
+      >
+        {loading && <p>Loading...</p>}
+        {data?.pokemons?.edges && data.pokemons.edges.length > 0 ? (
+          <div
+            css={css`
+              width: 100%;
+              max-width: 720px;
+              background-color: #fff;
+              border-radius: 8px;
+              overflow: hidden;
+              color: #102a43;
+            `}
+          >
+            <div
+              css={css`
+                display: flex;
+                padding: 1.6rem 2.4rem;
+                font-size: 2rem;
+                font-weight: bold;
+                background-color: #bcccdc;
+              `}
+            >
+              <span
+                css={css`
+                  flex: 1;
+                `}
+              >
+                Name:
+              </span>
+              <span
+                css={css`
+                  flex: 0.5;
+                `}
+              >
+                Type:
+              </span>
+              <span
+                css={css`
+                  flex: 0.5;
+                `}
+              >
+                Classification:
+              </span>
+            </div>
+
+            <div>
+              {data.pokemons.edges.map((pokemon) => (
+                <div
+                  key={pokemon?.node?.id}
+                  css={css`
+                    display: flex;
+                    padding: 2.4rem;
+                    cursor: pointer;
+                    transition: all 240ms;
+
+                    :hover {
+                      background-color: #d9e2ec;
+                    }
+
+                    :not(:last-of-type) {
+                      border-bottom: 1px solid #d9e2ec;
+                    }
+                  `}
+                >
+                  <div
+                    css={css`
+                      flex: 1;
+                    `}
+                  >
+                    {pokemon?.node?.name}
+                  </div>
+                  <div
+                    css={css`
+                      flex: 0.5;
+                    `}
+                  >
+                    {pokemon?.node?.types?.map((type) => (
+                      <span key={type}>{type}</span>
+                    ))}
+                  </div>
+                  <div
+                    css={css`
+                      flex: 0.5;
+                    `}
+                  >
+                    {pokemon?.node?.classification}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div>NO DATA</div>
+        )}
+      </main>
     </div>
   );
 };

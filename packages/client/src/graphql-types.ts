@@ -11,6 +11,7 @@ export interface GetAllPokemons_pokemons_edges_node {
   id: string;
   name: string | null;
   types: (PokemonTypes | null)[] | null;
+  classification: string | null;
 }
 
 export interface GetAllPokemons_pokemons_edges {

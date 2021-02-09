@@ -10,6 +10,7 @@ export const Header = () => {
         align-items: center;
         height: 320px;
         background-image: linear-gradient(to bottom right, #102a43, #243b53);
+        border-bottom: 6px solid #627d98;
       `}
     >
       <div

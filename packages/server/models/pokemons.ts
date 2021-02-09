@@ -14,6 +14,8 @@ interface Pokemon {
 
 const SIZE = 10;
 
+type Filter = (as: Pokemon[]) => Pokemon[];
+
 export function query(args: {
   after?: string;
   limit?: number;
@@ -21,26 +23,22 @@ export function query(args: {
 }): Connection<Pokemon> {
   const { after, q, limit = SIZE } = args;
 
-  const filterByQ: (as: Pokemon[]) => Pokemon[] =
-    // filter only if q is defined
-    q === undefined
-      ? identity
-      : A.filter((p) => p.name.toLowerCase().includes(q.toLowerCase()));
+  const filterByQ: Filter = !q
+    ? identity
+    : A.filter((p) => p.name.toLowerCase().includes(q.toLowerCase()));
 
-  const sliceByAfter: (as: Pokemon[]) => Pokemon[] =
-    // filter only if q is defined
-    after === undefined
-      ? identity
-      : (as) =>
-          pipe(
-            as,
-            A.findIndex((a) => a.id === after),
-            O.map((a) => a + 1),
-            O.fold(
-              () => as,
-              (idx) => as.slice(idx)
-            )
-          );
+  const sliceByAfter: Filter = !after
+    ? identity
+    : (as) =>
+        pipe(
+          as,
+          A.findIndex((a) => a.id === after),
+          O.map((a) => a + 1),
+          O.fold(
+            () => as,
+            (idx) => as.slice(idx)
+          )
+        );
 
   const results: Pokemon[] = pipe(
     data,

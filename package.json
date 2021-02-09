@@ -16,8 +16,8 @@
     "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\"",
     "lint": "eslint --fix --config .eslintrc.js '**/*.{ts,tsx,js}'",
     "introspect:schema": "apollo-codegen introspect-schema ./packages/server/schema.graphql --output schema.json",
-    "generate:types": "apollo-codegen generate **/*.graphql --target typescript --output ./packages/client/graphql.ts --schema schema.json",
-    "gen:types": "yarn introspect:schema yan generate:types"
+    "generate:types": "apollo-codegen generate ./packages/client/src/apollo/**/* --schema schema.json --target typescript --output ./packages/client/src/graphql-types.ts",
+    "gen:types": "concurrently \"yarn introspect:schema\"  \"yarn generate:types\""
   },
   "workspaces": [
     "packages/*"

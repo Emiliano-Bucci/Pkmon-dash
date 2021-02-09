@@ -18,9 +18,11 @@ export const App = () => {
     },
   });
 
-  console.log({ data });
-
   const handleOnChange = debounce((val: string) => setSearch(val), 300);
+
+  const showData = data?.pokemons?.edges && data.pokemons.edges.length > 0;
+  const noData =
+    !loading && data?.pokemons?.edges && data.pokemons.edges.length === 0;
 
   return (
     <div>
@@ -79,7 +81,7 @@ export const App = () => {
         `}
       >
         {loading && <p>Loading...</p>}
-        {data?.pokemons?.edges && data.pokemons.edges.length > 0 ? (
+        {showData && (
           <div
             css={css`
               width: 100%;
@@ -122,9 +124,9 @@ export const App = () => {
               </span>
             </div>
 
-            <div>
-              {data.pokemons.edges.map((pokemon) => (
-                <div
+            <ul>
+              {data?.pokemons?.edges?.map((pokemon) => (
+                <li
                   key={pokemon?.node?.id}
                   css={css`
                     display: flex;
@@ -164,14 +166,12 @@ export const App = () => {
                   >
                     {pokemon?.node?.classification}
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
-        ) : (
-          <div>NO DATA</div>
         )}
-
+        {noData && <div>NO DATA</div>}
         {data?.pokemons?.pageInfo?.hasNextPage && (
           <button
             onClick={() => {

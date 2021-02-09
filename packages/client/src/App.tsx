@@ -18,6 +18,8 @@ export const App = () => {
     },
   });
 
+  console.log({ data });
+
   const handleOnChange = debounce((val: string) => setSearch(val), 300);
 
   return (

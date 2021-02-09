@@ -1,3 +1,23 @@
+enum PokemonTypes {
+  GRASS
+  POISON
+  FIRE
+  FLYING
+  WATER
+  BUG
+  NORMAL
+  ELECTRIC
+  GROUND
+  FAIRY
+  FIGHTING
+  PSYCHIC
+  ROCK
+  STEEL
+  ICE
+  GHOST
+  DRAGON
+}
+
 type PageInfo {
   endCursor: ID
   hasNextPage: Boolean
@@ -6,7 +26,7 @@ type PageInfo {
 type Pokemon {
   id: ID!
   name: String
-  types: [String]
+  types: [PokemonTypes]
 }
 
 type PokemonEdge {
@@ -21,6 +41,5 @@ type PokemonsConnection {
 
 type Query {
   pokemons(q: String, after: ID, limit: Int): PokemonsConnection
-
-  pokemonsByType(type: String!): PokemonsConnection
+  pokemonsByType(type: PokemonTypes!): PokemonsConnection
 }

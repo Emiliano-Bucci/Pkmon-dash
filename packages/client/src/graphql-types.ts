@@ -10,7 +10,7 @@
 export interface GetAllPokemons_pokemons_edges_node {
   id: string;
   name: string | null;
-  types: (string | null)[] | null;
+  types: (PokemonTypes | null)[] | null;
 }
 
 export interface GetAllPokemons_pokemons_edges {
@@ -31,6 +31,26 @@ export interface GetAllPokemons {
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
+
+export enum PokemonTypes {
+  Bug = "Bug",
+  Dragon = "Dragon",
+  Electric = "Electric",
+  Fairy = "Fairy",
+  Fighting = "Fighting",
+  Fire = "Fire",
+  Flying = "Flying",
+  Ghost = "Ghost",
+  Grass = "Grass",
+  Ground = "Ground",
+  Ice = "Ice",
+  Normal = "Normal",
+  Poison = "Poison",
+  Psychic = "Psychic",
+  Rock = "Rock",
+  Steel = "Steel",
+  Water = "Water",
+}
 
 //==============================================================
 // END Enums and Input Objects

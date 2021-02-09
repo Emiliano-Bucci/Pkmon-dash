@@ -1,7 +1,7 @@
 import { Global } from "@emotion/react";
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import { App } from "./App";
 import { globalStyles } from "./theme/globalStyles";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 

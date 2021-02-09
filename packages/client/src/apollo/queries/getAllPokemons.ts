@@ -11,6 +11,10 @@ export const GET_ALL_POKEMONS_QUERY = gql`
           classification
         }
       }
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
     }
   }
 `;

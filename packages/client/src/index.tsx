@@ -7,7 +7,43 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000",
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          pokemons: {
+            // Don't cache separate results based on
+            // any of this field's arguments.
+            keyArgs: false,
+            // Concatenate the incoming list items with
+            // the existing list items.
+            merge(existing, incoming) {
+              if (existing?.edges) {
+                return {
+                  edges: [...existing.edges, ...incoming.edges],
+                  pageInfo: {
+                    ...existing.pageInfo,
+                    ...incoming.pageInfo,
+                  },
+                  __typename: "PokemonsConnection",
+                };
+              }
+
+              if (incoming?.edges) {
+                return {
+                  edges: incoming.edges,
+                  pageInfo: incoming.pageInfo,
+                  __typename: "PokemonsConnection",
+                };
+              }
+
+              return {};
+            },
+          },
+        },
+      },
+    },
+  }),
 });
 
 ReactDOM.render(

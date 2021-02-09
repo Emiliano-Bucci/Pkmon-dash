@@ -18,8 +18,14 @@ export interface GetAllPokemons_pokemons_edges {
   node: GetAllPokemons_pokemons_edges_node | null;
 }
 
+export interface GetAllPokemons_pokemons_pageInfo {
+  endCursor: string | null;
+  hasNextPage: boolean | null;
+}
+
 export interface GetAllPokemons_pokemons {
   edges: (GetAllPokemons_pokemons_edges | null)[] | null;
+  pageInfo: GetAllPokemons_pokemons_pageInfo | null;
 }
 
 export interface GetAllPokemons {

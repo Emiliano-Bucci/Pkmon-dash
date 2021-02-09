@@ -8,7 +8,7 @@ import { GetAllPokemons, GetAllPokemonsVariables } from "./graphql-types";
 
 export const App = () => {
   const [search, setSearch] = useState("");
-  const { data, loading, error } = useQuery<
+  const { data, loading, fetchMore } = useQuery<
     GetAllPokemons,
     GetAllPokemonsVariables
   >(GET_ALL_POKEMONS_QUERY, {
@@ -16,12 +16,6 @@ export const App = () => {
       q: search,
       limit: 10,
     },
-  });
-
-  console.log({
-    data,
-    loading,
-    error,
   });
 
   const handleOnChange = debounce((val: string) => setSearch(val), 300);
@@ -87,7 +81,7 @@ export const App = () => {
           <div
             css={css`
               width: 100%;
-              max-width: 720px;
+              max-width: 800px;
               background-color: #fff;
               border-radius: 8px;
               overflow: hidden;
@@ -174,6 +168,23 @@ export const App = () => {
           </div>
         ) : (
           <div>NO DATA</div>
+        )}
+
+        {data?.pokemons?.pageInfo?.hasNextPage && (
+          <button
+            onClick={() => {
+              fetchMore({
+                query: GET_ALL_POKEMONS_QUERY,
+                variables: {
+                  q: search,
+                  limit: 10,
+                  after: data?.pokemons?.pageInfo?.endCursor,
+                },
+              });
+            }}
+          >
+            Load more
+          </button>
         )}
       </main>
     </div>

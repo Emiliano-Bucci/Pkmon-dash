@@ -36,6 +36,7 @@ export interface GetAllPokemonsVariables {
   q?: string | null;
   after?: string | null;
   limit?: number | null;
+  type?: string | null;
 }
 
 /* tslint:disable */

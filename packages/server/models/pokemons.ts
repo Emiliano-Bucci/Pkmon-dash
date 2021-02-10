@@ -21,8 +21,19 @@ export function query(args: {
   after?: string;
   limit?: number;
   q?: string;
+  type?: string;
 }): Connection<Pokemon> {
-  const { after, q, limit = SIZE } = args;
+  const { after, q, limit = SIZE, type = "all" } = args;
+
+  const filterByType = (as: Pokemon[]): Pokemon[] => {
+    if (type === "all") {
+      return as;
+    }
+
+    return as.filter((pokemon) =>
+      pokemon.types.some((_type) => _type.toLowerCase() === type.toLowerCase())
+    );
+  };
 
   const filterByQ: FilterFn = !q
     ? identity
@@ -43,6 +54,7 @@ export function query(args: {
 
   const results: Pokemon[] = pipe(
     data,
+    filterByType,
     filterByQ,
     sliceByAfter,
     // slicing limit + 1 because the `toConnection` function should known the connection size to determine if there are more results

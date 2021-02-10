@@ -14,10 +14,18 @@ import { ReactComponent as ArrowSVG } from "./assets/icons/arrow.svg";
 
 export const App = () => {
   const [search, setSearch] = useState("");
-  const [
-    pokemonActiveType,
-    setPokemonActiveType,
-  ] = useState<PokemonTypes | null>(null);
+  const [pokemonActiveType, setPokemonActiveType] = useState<
+    PokemonTypes | "all"
+  >("all");
+
+  function getPokemonActiveTypeQueryVariable() {
+    if (pokemonActiveType === "all") {
+      return undefined;
+    }
+
+    return pokemonActiveType;
+  }
+
   const { data, loading, fetchMore } = useQuery<
     GetAllPokemons,
     GetAllPokemonsVariables
@@ -25,6 +33,7 @@ export const App = () => {
     variables: {
       q: search,
       limit: 10,
+      type: getPokemonActiveTypeQueryVariable(),
     },
   });
 
@@ -204,11 +213,26 @@ export const App = () => {
                     </div>
                     <div
                       css={css`
+                        display: grid;
+                        grid-auto-flow: column;
+                        grid-gap: 0.8rem;
+                        justify-content: start;
                         flex: 0.5;
                       `}
                     >
                       {pokemon?.node?.types?.map((type) => (
-                        <span key={type}>{type}</span>
+                        <span
+                          key={type}
+                          css={css`
+                            font-size: 1.4rem;
+                            background-color: #d9e2ec;
+                            border-radius: 4px;
+                            padding: 0.4rem 0.4rem;
+                            padding-bottom: 0;
+                          `}
+                        >
+                          {type}
+                        </span>
                       ))}
                     </div>
                     <div
@@ -267,8 +291,11 @@ export const App = () => {
             `}
           >
             <select
+              onChange={(event) =>
+                setPokemonActiveType(event.target.value as PokemonTypes)
+              }
               css={css`
-                background-color: #829ab1;
+                background-color: #9fb3c8;
                 padding: 0.8rem;
                 padding-left: 1rem;
                 color: #f0f4f8;

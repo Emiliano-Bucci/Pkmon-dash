@@ -12,7 +12,7 @@ const client = new ApolloClient({
       Query: {
         fields: {
           pokemons: {
-            keyArgs: ["q"],
+            keyArgs: ["q", "type"],
             merge(existing, incoming) {
               if (existing?.edges) {
                 return {

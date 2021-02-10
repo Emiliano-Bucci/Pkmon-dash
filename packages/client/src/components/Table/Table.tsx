@@ -16,10 +16,9 @@ export const Table: React.FC<Props> = ({ isLoading, data, onFetchMore }) => {
   return (
     <div
       css={css`
+        display: grid;
+        grid-gap: 4rem;
         width: 100%;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
       `}
     >
       {isLoading && <p>Loading...</p>}
@@ -128,7 +127,34 @@ export const Table: React.FC<Props> = ({ isLoading, data, onFetchMore }) => {
       )}
       {noData && <div>NO DATA</div>}
       {data?.pokemons?.pageInfo?.hasNextPage && (
-        <button onClick={onFetchMore}>Load more</button>
+        <div
+          css={css`
+            display: flex;
+            justify-content: center;
+          `}
+        >
+          <button
+            onClick={onFetchMore}
+            css={css`
+              background-color: #bcccdc;
+              border: none;
+              font-size: 1.8rem;
+              cursor: pointer;
+              transition: all 320ms;
+              width: auto;
+              padding: 1.2rem;
+              border-radius: 6px;
+              color: #334e68;
+
+              :hover,
+              :focus {
+                background-color: #9fb3c8;
+              }
+            `}
+          >
+            Load more
+          </button>
+        </div>
       )}
     </div>
   );

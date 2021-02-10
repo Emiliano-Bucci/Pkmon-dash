@@ -42,5 +42,5 @@ type PokemonsConnection {
 
 type Query {
   pokemons(q: String, after: ID, limit: Int, type: String): PokemonsConnection
-  pokemonsByType(type: PokemonTypes!): PokemonsConnection
+  pokemonById(id: String!): Pokemon
 }

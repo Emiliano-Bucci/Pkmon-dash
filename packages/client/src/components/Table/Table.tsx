@@ -7,9 +7,15 @@ type Props = {
   isLoading: boolean;
   data: GetAllPokemons | undefined;
   onFetchMore(): void;
+  onPokemonClick(id: string): void;
 };
 
-export const Table: React.FC<Props> = ({ isLoading, data, onFetchMore }) => {
+export const Table: React.FC<Props> = ({
+  isLoading,
+  data,
+  onFetchMore,
+  onPokemonClick,
+}) => {
   const showData = data?.pokemons?.edges && data.pokemons.edges.length > 0;
   const noData =
     !isLoading && data?.pokemons?.edges && data.pokemons.edges.length === 0;
@@ -67,7 +73,8 @@ export const Table: React.FC<Props> = ({ isLoading, data, onFetchMore }) => {
           <ul>
             {data?.pokemons?.edges?.map((pokemon) => (
               <li
-                key={pokemon?.node?.id}
+                key={pokemon!.node!.id}
+                onClick={() => onPokemonClick(pokemon!.node!.id)}
                 css={css`
                   display: flex;
                   padding: 2.4rem;

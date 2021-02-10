@@ -47,6 +47,7 @@ ReactDOM.render(
     <ApolloProvider client={client}>
       <Global styles={globalStyles} />
       <App />
+      <div id="dialog-portal" />
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")

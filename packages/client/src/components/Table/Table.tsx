@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { GetAllPokemons } from "../../graphql-types";
+import { NoDataPlaceholder } from "./NoDataPlaceholder";
 
 type Props = {
   isLoading: boolean;
@@ -28,7 +29,7 @@ export const Table: React.FC<Props> = ({ isLoading, data, onFetchMore }) => {
             background-color: #fff;
             border-radius: 8px;
             overflow: hidden;
-            color: #102a43;
+            color: #334e68;
           `}
         >
           <div
@@ -103,7 +104,7 @@ export const Table: React.FC<Props> = ({ isLoading, data, onFetchMore }) => {
                       key={type}
                       css={css`
                         font-size: 1.4rem;
-                        background-color: #d9e2ec;
+                        background-color: #f0f4f8;
                         border-radius: 4px;
                         padding: 0.4rem 0.64rem;
                         padding-bottom: 0;
@@ -125,7 +126,7 @@ export const Table: React.FC<Props> = ({ isLoading, data, onFetchMore }) => {
           </ul>
         </div>
       )}
-      {noData && <div>NO DATA</div>}
+      {noData && <NoDataPlaceholder />}
       {data?.pokemons?.pageInfo?.hasNextPage && (
         <div
           css={css`

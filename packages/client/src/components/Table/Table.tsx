@@ -111,7 +111,7 @@ export const Table: React.FC<Props> = ({
                       key={type}
                       css={css`
                         font-size: 1.4rem;
-                        background-color: #f0f4f8;
+                        background-color: #54d1db;
                         border-radius: 4px;
                         padding: 0.4rem 0.64rem;
                         padding-bottom: 0;

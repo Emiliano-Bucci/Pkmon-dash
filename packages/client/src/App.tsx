@@ -93,11 +93,17 @@ export const App = () => {
       <PokemonDialog
         isActive={showPokemonDialog.isActive}
         pokemonId={showPokemonDialog.pokemonId}
-        onClose={() => {
+        onDialogClosed={() => {
           setShowPokemonDialog({
             isActive: false,
             pokemonId: "",
           });
+        }}
+        onClose={() => {
+          setShowPokemonDialog((prev) => ({
+            isActive: false,
+            pokemonId: prev.pokemonId,
+          }));
         }}
       />
     </>
